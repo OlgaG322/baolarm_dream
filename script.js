@@ -135,7 +135,6 @@ function showRandomGeneralComment() {
 }
 
 function setRandomButtonLabel() {
-    const btn = document.getElementById('setAlarm');
     const phraseSpan = document.getElementById('alarmPhrase');
     phraseSpan.textContent = sarcasticButtonLabels[Math.floor(Math.random() * sarcasticButtonLabels.length)];
 }
@@ -191,108 +190,4 @@ const timePopup = document.getElementById('timePopup');
 const popupHours = document.getElementById('popupHours');
 const popupMinutes = document.getElementById('popupMinutes');
 const popupOkBtn = document.getElementById('popupOkBtn');
-const sleepTimeDisplay = document.getElementById('sleepTimeDisplay');
-const commentDiv = document.getElementById('comment');
-const wakeBtn = document.getElementById('wakeBtn');
-const sleepBtn = document.getElementById('sleepBtn');
-const sleepStatus = document.getElementById('sleepStatus');
-
-function fillTimeSelects() {
-    popupHours.innerHTML = '';
-    popupMinutes.innerHTML = '';
-    for (let h = 0; h < 24; h++) {
-        const opt = document.createElement('option');
-        opt.value = h;
-        opt.textContent = h.toString().padStart(2, '0');
-        popupHours.appendChild(opt);
-    }
-    for (let m = 0; m < 60; m += 5) {
-        const opt = document.createElement('option');
-        opt.value = m;
-        opt.textContent = m.toString().padStart(2, '0');
-        popupMinutes.appendChild(opt);
-    }
-}
-fillTimeSelects();
-
-setAlarmBtn.addEventListener('click', () => {
-    timePopup.style.display = 'flex';
-});
-
-popupOkBtn.addEventListener('click', () => {
-    const hours = popupHours.value.padStart(2, '0');
-    const minutes = popupMinutes.value.padStart(2, '0');
-    const now = new Date();
-    alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
-    timePopup.style.display = 'none';
-    // Меняем фразу на кнопке
-    setRandomButtonLabel();
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === timePopup) {
-        timePopup.style.display = 'none';
-    }
-});
-
-// --- END POPUP LOGIC ---
-
-wakeBtn.addEventListener('click', () => {
-    if (!sleepStart) return;
-    const sleepDurationMs = new Date() - sleepStart;
-    const sleepDurationHours = sleepDurationMs / 3600000;
-    const commentType = sleepDurationHours >= 7 ? 'good' : 'bad';
-    commentDiv.textContent = getRandomPhrase(commentType);
-    sleepStatus.textContent = 'Не спит';
-    playSoundRepeatedly(alarmSound, 3);
-    if (navigator.vibrate) navigator.vibrate([500, 200, 500]);
-    sleepStart = null;
-
-    // Показать надпись с подсчётом времени сна
-    sleepTimeDisplay.textContent = `Вы спали примерно ${sleepDurationHours.toFixed(2)} часов`;
-    sleepTimeDisplay.style.display = 'block';
-
-    // Кнопка "Я проснулся" становится просто белой надписью
-    wakeBtn.classList.add('awake');
-    wakeBtn.style.background = "none";
-    wakeBtn.style.color = "#fff";
-    wakeBtn.style.border = "none";
-    wakeBtn.style.cursor = "default";
-    wakeBtn.style.pointerEvents = "none";
-    wakeBtn.style.boxShadow = "none";
-    wakeBtn.style.opacity = "1";
-});
-
-sleepBtn.addEventListener('click', () => {
-    sleepStart = new Date();
-    sleepStatus.textContent = 'Спит';
-    commentDiv.textContent = getRandomPhrase('general');
-    // Скрыть надпись с подсчётом времени сна
-    sleepTimeDisplay.style.display = 'none';
-    // Кнопка снова становится активной и белой с синими буквами
-    wakeBtn.classList.remove('awake');
-    wakeBtn.style.background = "#fff";
-    wakeBtn.style.color = "#1e3c72";
-    wakeBtn.style.border = "1.5px solid #1e3c72";
-    wakeBtn.style.opacity = "1";
-    wakeBtn.style.pointerEvents = "auto";
-    wakeBtn.style.cursor = "pointer";
-    wakeBtn.style.boxShadow = "none";
-});
-
-// Инициализация
-function initApp() {
-    updateClock();
-    requestNotifications();
-    showRandomGeneralComment();
-    startBackgroundChecks();
-    setRandomButtonLabel();
-}
-
-document.addEventListener('DOMContentLoaded', initApp);
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('Service Worker зарегистрирован'))
-        .catch(err => console.error('Ошибка регистрации SW:', err));
-}
+const sleep
