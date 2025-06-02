@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-    max-width: 390px;
+    max-width: 400px;
     width: 98vw;
     margin: 16px auto 0;
     padding: 18px 10px 12px 10px;
@@ -33,24 +33,34 @@ body {
 }
 
 header {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     margin-top: 0;
 }
 
 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 3px;
+    font-size: 2.2rem;
+    margin-bottom: 7px;
     color: var(--accent-color);
+    letter-spacing: 0.02em;
 }
 
 .subtitle {
     font-size: 1.08rem;
     opacity: 0.92;
-    margin-bottom: 2px;
+    margin-bottom: 0;
     margin-top: 6px;
     color: #fff;
     font-weight: bold;
     letter-spacing: 0.01em;
+}
+
+.subtitle-bold {
+    font-size: 1.15rem;
+    margin: 0 0 2px 0;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
 }
 
 .time-box {
@@ -68,7 +78,15 @@ h1 {
 
 .status {
     font-size: 1.07rem;
-    color: var(--accent-color);
+    font-weight: bold;
+    margin-top: 2px;
+    transition: color 0.2s;
+}
+.status.spit {
+    color: #111;
+}
+.status.nespit {
+    color: #fff;
 }
 
 .controls {
@@ -76,7 +94,7 @@ h1 {
     flex-direction: column;
     gap: 13px;
     margin: 10px 0 0 0;
-    align-items: center;
+    align-items: stretch;
 }
 
 .alarm-btn {
@@ -84,15 +102,15 @@ h1 {
     color: #fff;
     border: none;
     width: 100%;
-    min-height: 54px;
-    padding: 0 14px 0 14px;
-    border-radius: 20px;
-    font-size: 1.13rem;
+    min-height: 56px;
+    padding: 0 18px;
+    border-radius: 22px;
+    font-size: 1.25rem;
     font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    text-align: left;
+    justify-content: center;
+    text-align: center;
     position: relative;
     transition: background 0.18s, color 0.18s, border 0.18s, transform 0.18s;
     word-break: break-word;
@@ -101,19 +119,18 @@ h1 {
     box-sizing: border-box;
     cursor: pointer;
 }
-
+.alarm-btn.centered {
+    justify-content: center;
+    text-align: center;
+}
 .alarm-phrase {
     flex: 1 1 auto;
     text-align: left;
     display: block;
 }
-
-.alarm-btn .alarm-icon {
-    flex: 0 0 auto;
-    margin-left: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 1.45em;
+.alarm-btn.centered .alarm-phrase {
+    text-align: center;
+    width: 100%;
 }
 
 .alarm-btn:hover {
@@ -172,8 +189,23 @@ h1 {
     background: #d94c4c;
 }
 
+/* Кнопки "иду спать" и "я проснулся" — скругленные прямоугольники */
+.sleep-btn, .wake-btn {
+    border-radius: 22px;
+    font-size: 1.15rem;
+    padding: 0 18px;
+    min-height: 52px;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: bold;
+    transition: background 0.18s, color 0.18s, border 0.18s, transform 0.18s;
+    box-sizing: border-box;
+    display: block;
+}
 .sleep-btn {
     background: var(--primary-color);
+    color: #fff;
+    border: none;
 }
 .sleep-btn:hover {
     background: #132a4a;
@@ -182,7 +214,6 @@ h1 {
     background: var(--wake-btn-white);
     color: var(--wake-btn-blue);
     border: 1.5px solid var(--wake-btn-blue);
-    transition: background 0.18s, color 0.18s, border 0.18s;
     cursor: pointer;
 }
 .wake-btn:hover {
@@ -198,15 +229,17 @@ h1 {
     pointer-events: none;
     box-shadow: none;
     opacity: 1;
+    font-size: 1.15rem;
 }
 
 .sleep-time-info {
     color: #fff;
-    font-size: 1.01rem;
+    font-size: 1.13rem;
     margin: 12px 0 0 0;
     font-style: italic;
     text-align: center;
     min-height: 22px;
+    font-weight: bold;
 }
 
 .comment-container {
@@ -230,13 +263,13 @@ h1 {
         padding: 7px 1vw;
     }
     h1 {
-        font-size: 1.17rem;
+        font-size: 1.45rem;
     }
     .time-display {
         font-size: 1.01rem;
     }
     .btn {
-        font-size: 0.97rem;
+        font-size: 1.01rem;
         padding: 10px 0;
         min-height: 38px;
     }
@@ -245,7 +278,7 @@ h1 {
     }
     .alarm-btn {
         min-height: 44px;
-        font-size: 0.98rem;
+        font-size: 1.01rem;
     }
     .popup-content {
         min-width: 180px;
