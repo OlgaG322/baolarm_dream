@@ -13,7 +13,8 @@
         <header>
             <h1>Баоларм</h1>
             <img src="icon-512.png" alt="Баоларм" width="110" height="110" style="display:block; margin: 10px auto 0;">
-            <p class="subtitle">Злобный баобаб заставит тебя засыпать вовремя!</p>
+            <p class="subtitle">Злобный баобаб заставит тебя</p>
+            <p class="subtitle-bold">ЗАСЫПАТЬ ВОВРЕМЯ</p>
         </header>
 
         <main>
@@ -25,39 +26,27 @@
             <div class="controls">
                 <button id="setAlarm" class="btn alarm-btn">
                     <span id="alarmPhrase" class="alarm-phrase">В это время я притворюсь, что ложусь спать</span>
-                    <span class="alarm-icon" aria-label="Выбрать время" title="Выбрать время">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                            <polyline points="9 18 12 21 15 18"/>
-                        </svg>
-                    </span>
                 </button>
-
-                <!-- Поп-ап выбора времени -->
-                <div id="timePopup" class="popup" style="display:none;">
-                    <div class="popup-content">
-                        <label>
-                            Часы:
-                            <select id="popupHours">
-                                <!-- часы от 0 до 23 -->
-                            </select>
-                        </label>
-                        <label>
-                            Минуты:
-                            <select id="popupMinutes">
-                                <!-- минуты от 0 до 59 -->
-                            </select>
-                        </label>
-                        <button id="popupOkBtn" class="btn popup-ok-btn">ОК</button>
+                <div id="popupWrap">
+                    <div id="timePopup" class="popup" style="display:none;">
+                        <div class="popup-content">
+                            <label>
+                                Часы:
+                                <select id="popupHours"></select>
+                            </label>
+                            <label>
+                                Минуты:
+                                <select id="popupMinutes"></select>
+                            </label>
+                            <button id="popupOkBtn" class="btn popup-ok-btn">ОК</button>
+                        </div>
                     </div>
                 </div>
-
                 <button id="sleepBtn" class="btn sleep-btn">Иду спать!</button>
                 <button id="wakeBtn" class="btn wake-btn">Я проснулся!</button>
+                <div id="sleepTimeDisplay" class="sleep-time-info" style="display:none"></div>
             </div>
 
-            <div id="sleepTimeDisplay" class="sleep-time-info" style="display:none"></div>
             <div class="comment-container">
                 <div id="comment" class="comment"></div>
             </div>
